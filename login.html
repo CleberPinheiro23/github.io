@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Intranet - Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Login</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Página Inicial</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section>
+    <form id="login-form">
+      <label for="username">Nome de usuário:</label>
+      <input type="text" id="username" name="username" required><br>
+
+      <label for="password">Senha:</label>
+      <input type="password" id="password" name="password" required><br>
+
+      <button type="submit">Entrar</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2023 Empresa. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      var usernameInput = document.getElementById('username');
+      var passwordInput = document.getElementById('password');
+
+      var username = usernameInput.value;
+      var password = passwordInput.value;
+
+      // Verificar as credenciais
+      var validUsers = [
+        { username: 'usuario1', password: 'senha1' },
+        { username: 'usuario2', password: 'senha2' },
+        { username: 'usuario3', password: 'senha3' }
+      ];
+
+      var isValidUser = validUsers.some(function(user) {
+        return user.username === username && user.password === password;
+      });
+
+      if (isValidUser) {
+        // Credenciais válidas, redirecionar para a página de formulários
+        window.location.href = 'form.html';
+      } else {
+        // Credenciais inválidas, exibir uma mensagem de erro
+        alert('Credenciais inválidas. Tente novamente.');
+      }
+    });
+  </script>
+</body>
+</html>
